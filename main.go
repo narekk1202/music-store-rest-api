@@ -2,19 +2,15 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/narekk1202/music-store-rest-api/pkg/controllers"
 	"github.com/narekk1202/music-store-rest-api/pkg/database"
+	"github.com/narekk1202/music-store-rest-api/pkg/routes"
 )
 
 func main() {
-	r := gin.Default()
+	router := gin.Default()
 
 	database.ConnectDB()
+	routes.SetupRoutes(router)
 
-	r.GET("/tracks", controllers.GetAllTracks)
-	r.GET("/tracks/:id", controllers.GetTrackByID)
-	r.POST("/create", controllers.CreateTrack)
-	r.DELETE("/delete/:id", controllers.DeleteTrack)
-	r.PATCH("/update/:id", controllers.UpdateTrack)
-	r.Run()
+	router.Run()
 }
