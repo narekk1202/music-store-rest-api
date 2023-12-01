@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/narekk1202/gin-rest-api/pkg/controllers"
-	"github.com/narekk1202/gin-rest-api/pkg/database"
+	"github.com/narekk1202/music-store-rest-api/pkg/controllers"
+	"github.com/narekk1202/music-store-rest-api/pkg/database"
 )
 
 func main() {

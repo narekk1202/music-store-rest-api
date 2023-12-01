@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/narekk1202/gin-rest-api/pkg/database"
-	"github.com/narekk1202/gin-rest-api/pkg/models"
+	"github.com/narekk1202/music-store-rest-api/pkg/database"
+	"github.com/narekk1202/music-store-rest-api/pkg/models"
 )
 
 func CreateTrack(ctx *gin.Context) {

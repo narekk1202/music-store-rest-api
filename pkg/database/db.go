@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"github.com/narekk1202/gin-rest-api/pkg/models"
+	"github.com/narekk1202/music-store-rest-api/pkg/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
