@@ -10,6 +10,7 @@ import (
 
 func CreateTrack(ctx *gin.Context) {
 	var createdTrack models.CreateTrack
+	DB := database.ConnectDB() 
 
 	if err := ctx.ShouldBindJSON(&createdTrack); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Invalid body"})
@@ -17,6 +18,6 @@ func CreateTrack(ctx *gin.Context) {
 	}
 
 	track := models.Track{Artist: createdTrack.Artist, Title: createdTrack.Title}
-	database.ConnectDB().Create(&track)
+	DB.Create(&track)
 	ctx.JSON(http.StatusOK, gin.H{"tracks": track})
 }

@@ -10,12 +10,13 @@ import (
 
 func DeleteTrack(ctx *gin.Context) {
 	var track models.Track
+	DB := database.ConnectDB()
 
-	if err := database.ConnectDB().Where("id = ?", ctx.Param("id")).First(&track).Error; err != nil {
+	if err := DB.Where("id = ?", ctx.Param("id")).First(&track).Error; err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Запись не существует"})
 		return
 	}
 
-	database.ConnectDB().Delete(&track)
+	DB.Delete(&track)
 	ctx.JSON(http.StatusOK, gin.H{"message": "Запись успешно удалена"})
 }

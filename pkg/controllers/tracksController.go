@@ -10,8 +10,9 @@ import (
 
 func GetAllTracks(ctx *gin.Context) {
 	var tracks []models.Track
+	DB := database.ConnectDB()
 
-	database.ConnectDB().Find(&tracks)
+	DB.Find(&tracks)
 
 	ctx.JSON(http.StatusOK, gin.H{"tracks": tracks})
 }

@@ -10,7 +10,9 @@ import (
 
 func UpdateTrack(ctx *gin.Context) {
 	var track models.Track
-	if err := database.ConnectDB().Where("id = ?", ctx.Param("id")).First(&track).Error; err != nil {
+	DB := database.ConnectDB()
+
+	if err := DB.Where("id = ?", ctx.Param("id")).First(&track).Error; err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": "Запись не существует"})
 		return
 	}
@@ -22,6 +24,6 @@ func UpdateTrack(ctx *gin.Context) {
 		return
 	}
 
-	database.ConnectDB().Model(&track).Updates(updatedTrack)
+	DB.Model(&track).Updates(updatedTrack)
 	ctx.JSON(http.StatusOK, gin.H{"tracks": track})
 }
